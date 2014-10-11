@@ -1,10 +1,6 @@
-'use strict';
+var angular = require('angular');
 
-// common stuff
-require('./angular.js');
-require('./angular-ui-router.js');
-
-var app = angular.module('webpackTestApp', ['ui.router']);
+var app     = angular.module('webpackTestApp', ['ui.router']);
 app.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider.state({
@@ -26,7 +22,3 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller: 'ContactCtrl',
     });
 });
-
-require('./controllers/home.js');
-require('./controllers/about.js');
-require('./controllers/contact.js');

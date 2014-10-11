@@ -1,0 +1,13 @@
+{
+  "name": "webpack-test",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dkarlovi/webpack-test",
+  "authors": [
+    "Dalibor Karlović <dkarlovi@gmail.com>"
+  ],
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-ui-router": "~0.2.11"
+  },
+  "license": "MIT"
+}
