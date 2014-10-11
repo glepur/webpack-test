@@ -16,6 +16,7 @@
     "url": "https://github.com/dkarlovi/webpack-test/issues"
   },
   "devDependencies": {
-    "webpack": "1.4.x"
+    "webpack": "1.4.x",
+    "exports": "0.0.1"
   }
 }

@@ -3,7 +3,7 @@ var path = require('path');
 var webpack = require('webpack');
 var console = require('console');
 
-var appModulesPath = path.join(__dirname, 'app', 'scripts');
+var appScriptsPath = path.join(__dirname, 'app', 'scripts');
 var nodeModulesPath = path.join(__dirname, 'node_modules');
 var bowerComponentsPath = path.join(__dirname, 'bower_components');
 
@@ -13,33 +13,25 @@ var themePath = path.join(path.resolve('../app'), 'theme');
 module.exports = {
     cache: true,
 
-    context: appModulesPath,
+    context: appScriptsPath,
     entry: {
         app: './app',
+        vendor: ['angular', 'angularRouter'], 
     },
 
     output: {
-        path: path.resolve('./app/res'),
-        publicPath: '/res/',
+        path: path.join(path.resolve('./app/assets'), ''),
+        publicPath: '/assets/',
         filename: "[name].bundle.js",
-        chunkFilename: '[id].bundle.js'
+        chunkFilename: ' [name].bundle.js'
     },
 
-    // webpack-dev-server options
-    contentBase: __dirname,
-
     resolve: {
-        // root: [appModulesPath, nodeModulesPath, bowerComponentsPath, themePath],
-
-        modulesDirectories: ['bower_components', 'node_modules'],
+        modulesDirectories: ['bower_components', 'node_modules', path.join(appScriptsPath, 'controllers')],
 
         alias: {
-            lodash: 'lodash/dist/lodash',
-            jquery: 'jquery/dist/jquery',
             angular: 'angular/angular',
             angularRouter: 'angular-ui-router/release/angular-ui-router',
-            angularCookies: 'angular-cookies/angular-cookies',
-            angularResource: 'angular-resource/angular-resource'
         },
         extensions: [
             '',
@@ -64,12 +56,12 @@ module.exports = {
           VERSION: JSON.stringify('alpha'),
           ASSETS_PATH: JSON.stringify(publicAssetsPath + '/'),
           DEVEL: true
-        })
+        }),
+        new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js")
     ],
 
     module: {
         loaders: [
-            { test: /[\/]angular\.js$/, loader: "exports?angular" },
             { test: /\.coffee$/, loader: "coffee" },
             { test: /\.html$/, loader: "html" },
             { test: /\.jade$/, loader: "template-html" },
