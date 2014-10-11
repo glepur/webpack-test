@@ -1,0 +1,21 @@
+{
+  "name": "webpack-test",
+  "version": "0.0.0",
+  "description": "Testing webpack + angular",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dkarlovi/webpack-test.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/dkarlovi/webpack-test/issues"
+  },
+  "devDependencies": {
+    "webpack": "~1.4.5"
+  }
+}
