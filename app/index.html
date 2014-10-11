@@ -1,0 +1,28 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title>Webpack test</title>
+    <link rel="stylesheet" href="/styles/bootstrap.css">
+</head>
+<body ng-app="webpackTestApp">
+    <div class="container">
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li ui-sref-active="active"><a ui-sref="home">Home</a></li>
+                <li ui-sref-active="active"><a ui-sref="about">About</a></li>
+                <li ui-sref-active="active"><a ui-sref="contact">Contact</a></li>
+            </ul>
+            <h3 class="text-muted">Webpack test</h3>
+        </div>
+        <div ui-view></div>
+    </div>
+    <script src="/scripts/jquery.js"></script>
+    <script src="/scripts/angular.js"></script>
+    <script src="/scripts/angular-ui-router.js"></script>
+    <script src="/scripts/app.js"></script>
+    <script src="/scripts/controllers/home.js"></script>
+    <script src="/scripts/controllers/about.js"></script>
+    <script src="/scripts/controllers/contact.js"></script>
+</body>
+</html>
