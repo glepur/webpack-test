@@ -15,13 +15,13 @@ module.exports = {
 
     context: appScriptsPath,
     entry: {
-        app: './app',
+        app: ['./app'],
         vendor: ['angular', 'angularRouter'], 
     },
 
     output: {
         path: path.join(path.resolve('./app/assets'), ''),
-        publicPath: '/assets/',
+        publicPath: '/glepur/webpack-test/app/assets/',
         filename: "[name].bundle.js",
         chunkFilename: ' [name].bundle.js'
     },
@@ -32,6 +32,7 @@ module.exports = {
         alias: {
             angular: 'angular/angular',
             angularRouter: 'angular-ui-router/release/angular-ui-router',
+            app: path.join(appScriptsPath, 'app')
         },
         extensions: [
             '',

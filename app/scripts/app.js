@@ -1,39 +1,73 @@
 define(['angular', 'angularRouter'], function() {
     var app     = angular.module('webpackTestApp', ['ui.router']);
-    app.config(function($stateProvider, $urlRouterProvider) {
+    app.config(function($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
+
+        app.controllerProvider = $controllerProvider;
+        app.compileProvider    = $compileProvider;
+        app.stateProvider      = $stateProvider;
+        app.filterProvider     = $filterProvider;
+        app.provide            = $provide;
+
         $urlRouterProvider.otherwise('/');
+
         $stateProvider.state({
             name: 'home',
             url: '/',
-            templateUrl: '/views/home.html',
-            controller: function() {
-                require.ensure(['home'], function() {
-                    // callback here
-                    console.log('home loaded');
-                })
+            templateUrl: '/glepur/webpack-test/app/views/home.html',
+            controller: 'HomeCtrl',
+            resolve: {
+                'preloadController': function($q) {
+                    var deferred = $q.defer();
+                    
+                    require.ensure([], function() {
+                        // callback here
+                        require('home');
+                        deferred.resolve();
+                    });
+
+                    return deferred.promise;
+                }
             },
         });
         $stateProvider.state({
             name: 'about',
             url: '/about/',
-            templateUrl: '/views/about.html',
-            controller: function() {
-                require.ensure(['about'], function() {
-                    // callback here
-                    console.log('about loaded');
-                })
+            templateUrl: '/glepur/webpack-test/app/views/about.html',
+            controller: 'AboutCtrl',
+            resolve: {
+                'preloadController': function($q) {
+                    var deferred = $q.defer();
+                    
+                    require.ensure([], function() {
+                        // callback here
+                        require('about');
+                        deferred.resolve();
+                    });
+
+                    return deferred.promise;
+                }
             },
         });
         $stateProvider.state({
             name: 'contact',
             url: '/contact/',
-            templateUrl: '/views/contact.html',
-            controller: function() {
-                require.ensure(['contact'], function() {
-                    // callback here
-                    console.log('contact loaded');
-                })
+            templateUrl: '/glepur/webpack-test/app/views/contact.html',
+            controller: 'ContactCtrl',
+            resolve: {
+                'preloadController': function($q) {
+                    var deferred = $q.defer();
+                    
+                    require.ensure([], function() {
+                        // callback here
+                        require('contact');
+                        deferred.resolve();
+                    });
+
+                    return deferred.promise;
+                }
             },
         });
     });
+
+    return app;
 });

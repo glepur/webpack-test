@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('webpackTestApp')
-    .controller('AboutCtrl', function () {
-        console.log('About ctrl');
-    });
+define(['angular', 'app'], function(angular, app) {
+	app.controllerProvider
+	    .register('AboutCtrl', function ($scope) {
+	        $scope.uspjeh = 'Uspjeh';
+	    });
+});

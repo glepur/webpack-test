@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('webpackTestApp')
-    .controller('ContactCtrl', function () {
-        console.log('Contact ctrl');
-    });
+define(['angular', 'app'], function(angular, app) {
+    app.controllerProvider
+        .register('ContactCtrl', function () {
+            console.log('Contact ctrl');
+        });
+});
