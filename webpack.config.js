@@ -38,11 +38,12 @@ module.exports = {
             '',
             '.js', '.coffee',
             '.html', '.jade',
-            '.css', '.styl', '.scss', '.less'
+            '.css', '.styl', '.scss', '.less', '.load'
         ]
     },
     resolveLoader: {
-        root: nodeModulesPath
+        modulesDirectories: ['node_modules', 'bower_components', 'loaders'],
+        extension: ['.js']
     },
 
     plugins: [
@@ -73,7 +74,8 @@ module.exports = {
             { test: /\.woff$/,   loader: "url?prefix=fonts/&limit=10000&minetype=application/font-woff" },
             { test: /\.ttf$/,    loader: "file?prefix=fonts/" },
             { test: /\.eot$/,    loader: "file?prefix=fonts/" },
-            { test: /\.svg$/,    loader: "file?prefix=fonts/" }
+            { test: /\.svg$/,    loader: "file?prefix=fonts/" },
+            { test: /\.load$/,    loader: "loader" }
         ]
     }
 
